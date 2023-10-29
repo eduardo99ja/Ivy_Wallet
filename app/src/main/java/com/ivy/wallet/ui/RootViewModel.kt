@@ -40,6 +40,8 @@ class RootViewModel @Inject constructor(
         if (baseCurrency.isNotEmpty()) {
             Timber.i("Syncing exchange rates for $baseCurrency")
             syncExchangeRatesAct(baseCurrency)
+        }else{
+            Timber.i("Base currency is empty")
         }
         InternalState(baseCurrency = baseCurrency)
     }

@@ -6,6 +6,7 @@ import com.ivy.exchange.RemoteExchangeProvider
 import com.ivy.network.ktorClient
 import io.ktor.client.call.*
 import io.ktor.client.request.*
+import timber.log.Timber
 import javax.inject.Inject
 
 class Fawazahmed0ExchangeProvider @Inject constructor(
@@ -26,6 +27,7 @@ class Fawazahmed0ExchangeProvider @Inject constructor(
         var eurRates: Map<String, Double> = emptyMap()
         for (url in FALLBACK_URLS) {
             eurRates = fetchEurBaseRates(url)
+            Timber.i("Fetched EUR rates from $url: $eurRates")
             if (eurRates.isNotEmpty()) break // rates fetched successfully, stop!
         }
         if (eurRates.isEmpty()) return failure() // empty rates = no rates = failure

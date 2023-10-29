@@ -6,6 +6,7 @@ import com.ivy.core.persistence.dao.exchange.ExchangeRateDao
 import com.ivy.core.persistence.entity.exchange.ExchangeRateEntity
 import com.ivy.data.CurrencyCode
 import com.ivy.exchange.RemoteExchangeProvider
+import timber.log.Timber
 import javax.inject.Inject
 
 class SyncExchangeRatesAct @Inject constructor(
@@ -22,6 +23,7 @@ class SyncExchangeRatesAct @Inject constructor(
 
     private suspend fun syncExchangeRates(baseCurrency: CurrencyCode) {
         val result = exchangeProvider.fetchExchangeRates(baseCurrency = baseCurrency)
+        Timber.i("Result of exchange $result")
         exchangeRateDao.save(
             result.ratesMap.mapNotNull { (currency, rate) ->
                 if (rate > 0.0) {
