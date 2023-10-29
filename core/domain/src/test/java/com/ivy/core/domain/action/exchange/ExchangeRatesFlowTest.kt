@@ -4,8 +4,8 @@ import app.cash.turbine.test
 import assertk.assertThat
 import assertk.assertions.hasSize
 import assertk.assertions.isEqualTo
-import MainCoroutineExtension
-import TestDispatchers
+import com.ivy.MainCoroutineExtension
+import com.ivy.TestDispatchers
 import com.ivy.core.domain.action.settings.basecurrency.BaseCurrencyFlow
 import io.mockk.every
 import io.mockk.mockk
