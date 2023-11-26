@@ -39,12 +39,6 @@ abstract class IvyPlugin : Plugin<Project> {
         }
     }
 
-//    private fun androidTest(project: Project) {
-//        project.androidLibrary().defaultConfig {
-//            testInstrumentationRunner = "com.ivy.common.androidtest.HiltTestRunner"
-//        }
-//    }
-
     /**
      * Global lint configuration
      */
@@ -53,6 +47,7 @@ abstract class IvyPlugin : Plugin<Project> {
             disable.add("MissingTranslation")
         }
     }
+
     private fun androidTest(project: Project) {
         project.dependencies {
             androidTestImplementation("com.willowtreeapps.assertk:assertk:${Versions.assertK}")
@@ -75,7 +70,7 @@ abstract class IvyPlugin : Plugin<Project> {
             plugin("com.google.devtools.ksp")
 
             //TODO: Enable if we migrate to kotlinx serialization
-    //            plugin("kotlinx-serialization")
+            //            plugin("kotlinx-serialization")
         }
     }
 
